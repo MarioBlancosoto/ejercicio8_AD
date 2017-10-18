@@ -1,6 +1,9 @@
 
 package textodelimitado;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 
 public class Product {
     private String codigo;
@@ -45,7 +48,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" + "codigo=" + codigo + ", descripcion=" + descripcion + ", prezo=" + prezo + '}';
+        return "Product{" + "codigo=" + codigo + ", descripcion=" + descripcion + ", prezo=" + NumberFormat.getCurrencyInstance().format(prezo) + '}';
     }
     
     

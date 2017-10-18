@@ -16,11 +16,11 @@ public class TextoDelimitado {
         public static String[] cod ={"p1","p2","p3"};
         public static String[] desc ={"parafusos","cravos","tachas"};
         public static double[] prezo ={3,4,5};
-    
+        public static String [] contenido;
     public static void main(String[] args) {
     
         String ruta = "/home/local/DANIELCASTELAO/mblancosoto/NetBeansProjects/TextoDelimitado/Textodelimitado.txt";
-        
+       
        escribir(ruta);
        ler(ruta); 
     }
@@ -44,17 +44,16 @@ public class TextoDelimitado {
   }
   
   public static void ler(String ruta){
-      
+       
             try {
                 BufferedReader br = new BufferedReader(new FileReader(ruta));
-               
-                for(int i=0;i<4;i++){
-                   
-                   while(br.ready()==true){
-                    
-                    System.out.println(""+br.readLine());
-                   }
+               Product producto = new Product();
+               while(br.ready()){
+               contenido = br.readLine().split("\t");
+                Product p3=new Product(contenido[0],contenido[1],Double.parseDouble(contenido[2]));
+                   System.out.println(p3.toString());
                 }
+                
                 
                 br.close();
             } catch (FileNotFoundException ex) {
